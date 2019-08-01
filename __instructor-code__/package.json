@@ -1,9 +1,7 @@
 {
-  "name": "authentication",
+  "name": "auth-mini",
   "version": "0.1.0",
   "private": true,
-  "main": "server/server.js",
-  "proxy": "http://localhost:4000",
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
@@ -29,5 +27,7 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:4000",
+  "main": "server/server.js"
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       emailInput: '',
       passwordInput: '',
@@ -20,6 +20,7 @@ class App extends Component {
     this.setState({
       user: res.data.userData
     })
+
   }
 
   async login() {
@@ -33,35 +34,26 @@ class App extends Component {
   }
 
   async logout() {
-    await axios.get('/api/logout')
-    this.setState({
-      user: {}
-    })
+    let res = await axios.get('/logout')
+    this.setState({ user: {} })
   }
 
   render() {
     return (
-      <div className="App-header">
+      <div className="App">
         <h1>Auth Mini</h1>
-
         <p>
           Email:
-          <input
-            onChange={e => this.setState({ emailInput: e.target.value })}
-            type="text" />
+          <input onChange={(e) => this.setState({ emailInput: e.target.value })} type="text" />
         </p>
         <p>
           Password:
-          <input
-            onChange={e => this.setState({ passwordInput: e.target.value })}
-            type="password" />
+          <input onChange={(e) => this.setState({ passwordInput: e.target.value })} type="text" />
         </p>
-        <div>
-          <button onClick={() => this.signup()}>Signup</button>
-          <button onClick={() => this.login()}>Login</button>
-          <button onClick={() => this.logout()}>Logout</button>
-          <hr />
-        </div>
+        <button onClick={() => this.signup()}>Signup</button>
+        <button onClick={() => this.login()}>Login</button>
+        <button onClick={() => this.logout()}>Logout</button>
+        <hr />
         <p>USER: {JSON.stringify(this.state.user)}</p>
       </div>
     );
